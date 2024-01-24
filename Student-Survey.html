@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: rgb(240, 240, 240);
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .student {
+            background-color: white;
+            width: 100%;
+        }
+
+        .header {
+            background-color: grey;
+            color: white;
+            height: 15%;
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .details {
+            padding: 20px;
+        }
+
+        .sch {
+            font-size: 20px;
+        }
+
+        #sname {
+            width: 100%;
+            border: none;
+            border-bottom: 2px solid black;
+            outline: none;
+        }
+
+        label {
+            margin-top: 20px;
+            display: block;
+            font-size: 20px;
+        }
+
+        input {
+            border: 1px solid black;
+            border-radius: 2px;
+            margin-top: 15px;
+            width: 45%;
+            height: 40px;
+            outline: none;
+            font-size: 20px;
+            padding-left: 5px;
+        }
+
+        input:hover {
+            border: 3px solid;
+            border-color: rgb(90, 171, 211);
+        }
+
+        #sdate {
+            width: 90%;
+        }
+
+        .box1 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        /* flex-direction: column; */
+        }
+
+
+        select {
+            margin-top: 15px;
+            width: 90%;
+            font-size: 20px;
+            height: 40px;
+            border: 1px solid gray;
+            border-radius: 2px;
+        }
+        
+        table {
+            margin-top: 50px;
+            background-color: white;
+            border: 1px solid black;
+            font-size: 1rem;
+        }
+
+        .education input,
+        .material input,
+        .environment input {
+            width: 25%;
+        }
+
+        .education,
+        .material,
+        .environment {
+            overflow: auto;
+        }
+
+        div.list ul li {
+            list-style: none;
+            color: gray;
+        }
+
+        .list input {
+            width: 15%;
+            height: 15%;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: center;
+            width: 10px;
+            height: 5px;
+            border-bottom: 1px solid black;
+            border-right: 1px solid black;
+        }
+
+        table tr:last-child td{
+            border-bottom: none;
+        }
+
+        table td:last-child{
+            border-right: none;
+        }
+
+         table th:last-child{
+            border-right: none;
+        }
+
+        h4 {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        p {
+            font-size: 20px;
+            color: gray;
+            margin-top: 30px;
+        }
+
+        textarea{
+            width: 100%;
+            border: 1px solid gray;
+            margin-top: 10px;
+            height: 100px;
+            border-radius: 5px;
+        }
+
+        .button{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button{
+            background-color: rgb(66, 165, 79);
+            color: white;
+            font-size: 20px;
+            border-radius: 5px;
+            border: none;
+            width: 100%;
+            height: 40px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        
+        @media only screen and (min-width:1000px) {
+            .container {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .student {
+                background-color: white;
+                width: 900px;
+                padding: 20px;
+            }
+
+            .header {
+                font-size: 2rem;
+            }
+
+            label {
+                color: rgb(119, 119, 119);
+          
+            }
+
+            .box1 {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+            input {
+                border-color: gray;
+                border-radius: 5px;
+                font-size: 20px;
+                padding-left: 5px;
+            }
+
+            #sdate {
+                width: 45%;
+            }
+
+            select {
+                border: 1px solid gray;
+                border-radius: 2px;
+                width: 45%;
+            }
+
+            .education {
+                
+                justify-content: center;
+
+            }
+
+            .material {
+               
+                justify-content: center;
+            }
+
+            .environment {
+              
+                justify-content: center;
+            }
+
+            table {
+                margin-top: 50px;
+                background-color: white;
+                /* border: 1px solid black; */
+                width: 800px;
+            }
+
+            button{
+                width: 40%;
+            }
+        }
+    </style>
+    <script>
+      function onfocusFunction(className) {
+         document.getElementById(className).style.backgroundColor = "#FFFDDB";
+        }
+
+      function onblurFunction(className) {
+        document.getElementById(className).style.background = "white";
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="student">
+            <div class="header">
+                <h2>STUDENT SURVEY</h2>
+            </div>
+            <div class="details">
+                <div class="sch" id="schname">
+                    <label for="suname">School Name</label>
+                    <input type="text" name="shName" id="sname" autocomplete="off" required onfocus="onfocusFunction('schname')" onblur="onblurFunction('schname')" /> 
+                </div>
+                <div class="stdname" id="stname" style="height: 120px; padding: 15px; margin-top: 10px;">
+                    <label for="stdname">Student Name</label>
+                    <div class="box1">
+                        <input type="text" name="fname" id="stdname" autocomplete="off" placeholder="First Name" required onfocus="onfocusFunction('stname')" onblur="onblurFunction('stname')"/>
+                        <input type="text" name="lname" id="stdname" autocomplete="off" placeholder="Last Name" required onfocus="onfocusFunction('stname')" onblur="onblurFunction('stname')" />
+                    </div>
+                </div>
+                <div class="date" id="date" style="height: 120px; padding: 10px;">
+                    <label for="sdate">Date</label>
+                    <input type="date" name="date" id="sdate" autocomplete="off" required onfocus="onfocusFunction('date')" onblur="onblurFunction('date')" />
+                </div>
+                <div class="time" id="stime" style="margin-top: 5px; height: 120px; padding: 10px;">
+                    <label for="stime">How long have you been a student here ?</label>
+                    <select id="stime" name="time" required onfocus="onfocusFunction('stime')" onblur="onblurFunction('stime')">
+                        <option value="0">Please Select</option>
+                        <option value="1">Less than one month</option>
+                        <option value="2">1-6 month</option>
+                        <option value="3">6 month to 1 year</option>
+                        <option value="4">more than 1 year</option>
+                        <option value="5">1 to 3 year</option>
+                        <option value="6">More than 3 years</option>
+                    </select>
+                </div><br><br>
+                <hr>
+                <h4>Please rate the following aspects of your education.</h4>
+                <div class="education" id="edu" style="width: 95%; height: 100%; padding: 10px; margin-top: 10px;">
+                    <p>Curriculum and classes for the term</p>
+                    <table>
+                        <tr>
+                            <th> </th>
+                            <th>Strongly Disagree</th>
+                            <th>Disagree</th>
+                            <th>Neutral</th>
+                            <th>Agree</th>
+                            <th>Strongly Agree</th>
+                        </tr>
+                        <tr>
+                            <td>The class descriptions accurately described the content.</td>
+                            <td><input type="radio" name="des" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                            <td><input type="radio" name="des" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                            <td><input type="radio" name="des" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                            <td><input type="radio" name="des" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                            <td><input type="radio" name="des" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                        </tr>
+                        <tr>
+                            <td>I was academically prepared for the classes.</td>
+                            <td><input type="radio" name="aca" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                            <td><input type="radio" name="aca" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                            <td><input type="radio" name="aca" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                            <td><input type="radio" name="aca" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                            <td><input type="radio" name="aca" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                        </tr>
+                        <tr>
+                            <td>The class sizes were appropriate.</td>
+                            <td><input type="radio" name="size" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                            <td><input type="radio" name="size" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                            <td><input type="radio" name="size" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                            <td><input type="radio" name="size" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                            <td><input type="radio" name="size" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                        </tr>
+                        <tr>
+                            <td>The classes started and ended on time.</td>
+                            <td><input type="radio" name="start" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                            <td><input type="radio" name="start" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                            <td><input type="radio" name="start" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                            <td><input type="radio" name="start" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                            <td><input type="radio" name="start" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                        </tr>
+                        <tr>
+                            <td>The classes increased my knowledge of the subject matter.</td>
+                            <td><input type="radio" name="knowledge" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                            <td><input type="radio" name="knowledge" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                            <td><input type="radio" name="knowledge" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                            <td><input type="radio" name="knowledge" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                            <td><input type="radio" name="knowledge" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                        </tr>
+                        <tr>
+                            <td>The overall quality of the classes was excellent.</td>
+                            <td><input type="radio" name="quality" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                            <td><input type="radio" name="quality" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                            <td><input type="radio" name="quality" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                            <td><input type="radio" name="quality" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                            <td><input type="radio" name="quality" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                        </tr>
+                        <tr>
+                            <td>I would recommend these classes to other students.</td>
+                            <td><input type="radio" name="recommend" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                            <td><input type="radio" name="recommend" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                            <td><input type="radio" name="recommend" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                            <td><input type="radio" name="recommend" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                            <td><input type="radio" name="recommend" onfocus="onfocusFunction('edu')" onblur="onblurFunction('edu')"></td>
+                        </tr>
+                    </table>
+                </div>
+               
+                <div class="material" id="mate" style="width: 95%; height: 100%; padding: 10px; margin-top: 10px;">
+                    <p>Material</p>
+                    <table>
+                        <tr>
+                            <th> </th>
+                            <th>Strongly Disagree</th>
+                            <th>Disagree</th>
+                            <th>Neutral</th>
+                            <th>Agree</th>
+                            <th>Strongly Agree</th>
+                        </tr>
+                        <tr>
+                            <td>The objectives and requirements for the classes were clearly stated.</td>
+                            <td><input type="radio" name="objectives" onfocus="onfocusFunction('mate')" onblur="onblurFunction('mate')"></td>
+                            <td><input type="radio" name="objectives" onfocus="onfocusFunction('mate')" onblur="onblurFunction('mate')"></td>
+                            <td><input type="radio" name="objectives" onfocus="onfocusFunction('mate')" onblur="onblurFunction('mate')"></td>
+                            <td><input type="radio" name="objectives" onfocus="onfocusFunction('mate')" onblur="onblurFunction('mate')"></td>
+                            <td><input type="radio" name="objectives" onfocus="onfocusFunction('mate')" onblur="onblurFunction('mate')"></td>
+                        </tr>
+                        <tr>
+                            <td>The textbooks and learning materials were relevant and useful.</td>
+                            <td><input type="radio" name="textbox" onfocus="onfocusFunction('mate')" onblur="onblurFunction('mate')"></td>
+                            <td><input type="radio" name="textbox" onfocus="onfocusFunction('mate')" onblur="onblurFunction('mate')"></td>
+                            <td><input type="radio" name="textbox" onfocus="onfocusFunction('mate')" onblur="onblurFunction('mate')"></td>
+                            <td><input type="radio" name="textbox" onfocus="onfocusFunction('mate')" onblur="onblurFunction('mate')"></td>
+                            <td><input type="radio" name="textbox" onfocus="onfocusFunction('mate')" onblur="onblurFunction('mate')"></td>
+                        </tr>
+                        <tr>
+                            <td>Tests and assignments were based on material covered in each class.</td>
+                            <td><input type="radio" name="assignment" onfocus="onfocusFunction('mate')" onblur="onblurFunction('mate')"></td>
+                            <td><input type="radio" name="assignment" onfocus="onfocusFunction('mate')" onblur="onblurFunction('mate')"></td>
+                            <td><input type="radio" name="assignment" onfocus="onfocusFunction('mate')" onblur="onblurFunction('mate')"></td>
+                            <td><input type="radio" name="assignment" onfocus="onfocusFunction('mate')" onblur="onblurFunction('mate')"></td>
+                            <td><input type="radio" name="assignment" onfocus="onfocusFunction('mate')" onblur="onblurFunction('mate')"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="environment" id="env" style="width: 95%; height: 100%; padding: 10px; margin-top: 10px;">
+                    <p>School environment</p>
+                    <table>
+                        <tr>
+                            <th> </th>
+                            <th>Strongly Disagree</th>
+                            <th>Disagree</th>
+                            <th>Neutral</th>
+                            <th>Agree</th>
+                            <th>Strongly Agree</th>
+                        </tr>
+                        <tr>
+                            <td>The physical classroom environments were clean and comfortable.</td>
+                            <td><input type="radio" name="classroom" onfocus="onfocusFunction('env')" onblur="onblurFunction('env')"></td>
+                            <td><input type="radio" name="classroom" onfocus="onfocusFunction('env')" onblur="onblurFunction('env')"></td>
+                            <td><input type="radio" name="classroom" onfocus="onfocusFunction('env')" onblur="onblurFunction('env')"></td>
+                            <td><input type="radio" name="classroom" onfocus="onfocusFunction('env')" onblur="onblurFunction('env')"></td>
+                            <td><input type="radio" name="classroom" onfocus="onfocusFunction('env')" onblur="onblurFunction('env')"></td>
+                        </tr>
+                        <tr>
+                            <td>Library and on-site computers consistently made available.</td>
+                            <td><input type="radio" name="computer" onfocus="onfocusFunction('env')" onblur="onblurFunction('env')"></td>
+                            <td><input type="radio" name="computer" onfocus="onfocusFunction('env')" onblur="onblurFunction('env')"></td>
+                            <td><input type="radio" name="computer" onfocus="onfocusFunction('env')" onblur="onblurFunction('env')"></td>
+                            <td><input type="radio" name="computer" onfocus="onfocusFunction('env')" onblur="onblurFunction('env')"></td>
+                            <td><input type="radio" name="computer" onfocus="onfocusFunction('env')" onblur="onblurFunction('env')"></td>
+                        </tr>
+                        <tr>
+                            <td>The common spaces were clean and comfortable.</td>
+                            <td><input type="radio" name="space" onfocus="onfocusFunction('env')" onblur="onblurFunction('env')"></td>
+                            <td><input type="radio" name="space" onfocus="onfocusFunction('env')" onblur="onblurFunction('env')"></td>
+                            <td><input type="radio" name="space" onfocus="onfocusFunction('env')" onblur="onblurFunction('env')"></td>
+                            <td><input type="radio" name="space" onfocus="onfocusFunction('env')" onblur="onblurFunction('env')"></td>
+                            <td><input type="radio" name="space" onfocus="onfocusFunction('env')" onblur="onblurFunction('env')"></td>
+                        </tr>
+                        <tr>
+                            <td>The school communicated institutional goals and relevant news to students.</td>
+                            <td><input type="radio" name="communicated" onfocus="onfocusFunction('env')" onblur="onblurFunction('env')"></td>
+                            <td><input type="radio" name="communicated" onfocus="onfocusFunction('env')" onblur="onblurFunction('env')"></td>
+                            <td><input type="radio" name="communicated" onfocus="onfocusFunction('env')" onblur="onblurFunction('env')"></td>
+                            <td><input type="radio" name="communicated" onfocus="onfocusFunction('env')" onblur="onblurFunction('env')"></td>
+                            <td><input type="radio" name="communicated" onfocus="onfocusFunction('env')" onblur="onblurFunction('env')"></td>
+                        </tr>
+                    </table>
+                </div><Br><br>
+                <hr>
+                <div class="list" id="redlist" style="height: 100%; padding: 10px; margin-top: 20px;">
+                    <p style="color: black;">How likely are you to recommend our school to a friend or colleague?</p>
+                    <ul>
+                        <li><input type="radio" name="like" id="recommend" onfocus="onfocusFunction('redlist')" onblur="onblurFunction('redlist')">Very Likely</li>
+                        <li><input type="radio" name="like" id="recommend" onfocus="onfocusFunction('redlist')" onblur="onblurFunction('redlist')">Somewhat likely</li>
+                        <li><input type="radio" name="like" id="recommend" onfocus="onfocusFunction('redlist')" onblur="onblurFunction('redlist')">Unsure</li>
+                        <li><input type="radio" name="like" id="recommend" onfocus="onfocusFunction('redlist')" onblur="onblurFunction('redlist')">Not very likely</li>
+                        <li><input type="radio" name="like" id="recommend" onfocus="onfocusFunction('redlist')" onblur="onblurFunction('redlist')">Not likely</li>
+                    </ul>
+                </div>
+                <div class="textarea" id="textar1" style="height: 100%; padding: 10px;">
+                    <p>If not, why?</p>
+                    <textarea onfocus="onfocusFunction('textar1')" onblur="onblurFunction('textar1')"></textarea>
+                </div>
+                <div class="textarea" id="textar2" style="height: 100%; padding: 10px;">
+                    <p>What could we do to increase your level of satisfaction?</p>
+                    <textarea onfocus="onfocusFunction('textar2')" onblur="onblurFunction('textar2')"></textarea>
+                </div>
+                <div class="textarea" id="textar3" style="height: 100%; padding: 10px;">
+                    <p>Additional comments</p>
+                    <textarea onfocus="onfocusFunction('textar3')" onblur="onblurFunction('textar3')"></textarea>
+                </div>
+                <div class="button">
+                    <button type="submit">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
